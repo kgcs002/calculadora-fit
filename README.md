@@ -62,5 +62,3 @@ Fique à vontade para fazer um fork e enviar suas sugestões, principalmente dic
 
 ---
 
-> "Saúde não é só sobre o que você está comendo, mas também sobre o que você está pensando e dizendo."  
-> *- Desconhecido* ✨
