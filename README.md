@@ -58,7 +58,9 @@ Fique à vontade para fazer um fork e enviar suas sugestões, principalmente dic
 
 **Kauan Sasaqui**  
 📧 [kauansasaqui@gmail.com](mailto:kauansasaqui@gmail.com)  
-💼 [LinkedIn](https://www.linkedin.com/in/seu-perfil)  
+💼 [LinkedIn](https://www.linkedin.com/in/kgcs002)  
 
 ---
 
+> "Saúde não é só sobre o que você está comendo, mas também sobre o que você está pensando e dizendo."  
+> *- Desconhecido* ✨
