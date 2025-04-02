@@ -58,6 +58,6 @@ Fique à vontade para fazer um fork e enviar suas sugestões, principalmente dic
 
 **Kauan Sasaqui**  
 📧 [kauansasaqui@gmail.com](mailto:kauansasaqui@gmail.com)  
-💼 [LinkedIn](https://www.linkedin.com/in/kgcs002)  
+💼 [LinkedIn](https://www.linkedin.com/in/kgcs02/)  
 
 ---
