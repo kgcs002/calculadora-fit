@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriFit - Calculadora da Saúde 😎🥑</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F5A5CF;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      color: #333;
+      border-radius: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #8e206f;
+      font-weight: 700;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      color: #8e206f;
+      font-weight: 600;
+      margin-top: 30px;
+    }
+
+    label {
+      font-weight: 500;
+    }
+
+    label,
+    input,
+    button {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #8e206f;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background-color: #b41bb9;
+    }
+
+    .resultado {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      font-weight: 500;
+    }
+
+    .alimento-item {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .alimento-item button {
+      width: auto;
+      background-color: #ff6aa8;
+      font-size: 0.9em;
+    }
+
+    .emoji {
+      font-size: 1.3em;
+    }
+
+    hr {
+      border: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #8e206f;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>NutriFit 🥗💪</h1>
+  <p style="text-align: center;">Aquela ajudinha marota pra ficar na régua... ou na balança 😄</p>
+
+  <h2>Calculadora de IMC 📏</h2>
+
+  <label>Peso (kg):</label>
+  <input type="number" id="peso" placeholder="Ex: 61">
+
+  <label>Altura (m):</label>
+  <input type="number" step="0.01" id="altura" placeholder="Ex: 1.75 (use ponto para separação decimal)">
+
+  <button onclick="calcularIMC()">Calcular IMC (Índice de Massa Corporal) 🧠</button>
+
+  <div id="resultadoIMC" class="resultado"></div>
+
+  <hr>
+
+  <h2>Registro de Alimentos 🍗🍚🍌</h2>
+  <label>Alimento:</label>
+  <input type="text" id="alimentoNome" placeholder="Ex: Frango grelhado">
+
+  <label>Calorias por porção:</label>
+  <input type="number" id="alimentoCalorias" placeholder="Ex: 165">
+
+  <button onclick="adicionarAlimento()">Adicionar Alimento ➕</button>
+
+  <div id="listaAlimentos"></div>
+
+  <button onclick="calcularCalorias()">Calcular Total de Calorias 🔥</button>
+
+  <div id="resultadoCalorias" class="resultado"></div>
+
+  <footer>Kauan Sasaqui © 2025 - Saúde e bem estar 🥑</footer>
+
+  <script>
+    const alimentos = [];
+
+    const interpretarIMC = (imc) => {
+      if (imc < 18.5) return "Você está abaixo do peso 🥺 Bora comer e treinar, hein?! 💪";
+      if (imc < 24.9) return "Peso ideal 😎 Continua nessa pegada! ✅";
+      if (imc < 29.9) return "Sobrepeso 🤔 Tá na hora de rever uns lanches aí... Mas bora, dá tempo! 💪🔥";
+      return "Obesidade 🚨 EITAAA! Hora de marcar um papo com a nutri e focar no projeto saúde 🥗🔥";
+    };
+
+    function calcularIMC() {
+      const peso = parseFloat(document.getElementById('peso').value);
+      const altura = parseFloat(document.getElementById('altura').value);
+      const resultado = document.getElementById('resultadoIMC');
+
+      if (isNaN(peso) || isNaN(altura) || altura <= 0) {
+        resultado.innerHTML = "Preenche aí, campeão/campeã! 🤨";
+        return;
+      }
+
+      const imc = peso / (altura ** 2);
+      resultado.innerHTML = `<strong>Seu IMC:</strong> ${imc.toFixed(2)}<br><strong>Classificação:</strong> ${interpretarIMC(imc)}`;
+    }
+
+    function adicionarAlimento() {
+      const nome = document.getElementById('alimentoNome').value.trim();
+      const calorias = parseFloat(document.getElementById('alimentoCalorias').value);
+
+      if (nome === "" || isNaN(calorias)) {
+        alert("Bora preencher direito, não sou Jesus 😅");
+        return;
+      }
+
+      alimentos.push({ nome, calorias });
+      atualizarLista();
+      document.getElementById('alimentoNome').value = "";
+      document.getElementById('alimentoCalorias').value = "";
+    }
+
+    function atualizarLista() {
+      const lista = document.getElementById('listaAlimentos');
+      lista.innerHTML = "<h3>Alimentos Registrados 🍽️</h3>";
+      alimentos.forEach((alimento, index) => {
+        lista.innerHTML += `<div class="alimento-item">
+          ${alimento.nome} - ${alimento.calorias} kcal 
+          <button onclick="removerAlimento(${index})">Remover ❌</button>
+        </div>`;
+      });
+    }
+
+    function removerAlimento(index) {
+      alimentos.splice(index, 1);
+      atualizarLista();
+    }
+
+    function calcularCalorias() {
+      if (alimentos.length === 0) {
+        document.getElementById('resultadoCalorias').innerHTML = "Nenhum alimento registrado! 🥺";
+        return;
+      }
+
+      let totalCalorias = 0;
+      let detalhes = "";
+
+      alimentos.forEach(alimento => {
+        const qtd = prompt(`Quantas porções de ${alimento.nome} você mandou pra dentro? 🍴`);
+        const qtdNum = parseFloat(qtd);
+        if (!isNaN(qtdNum)) {
+          const cal = alimento.calorias * qtdNum;
+          totalCalorias += cal;
+          detalhes += `✅ ${alimento.nome}: ${cal.toFixed(2)} kcal (${qtdNum} porção(ões))<br>`;
+        }
+      });
+
+      document.getElementById('resultadoCalorias').innerHTML = `
+        <strong>Resumo da Fome:</strong><br>${detalhes}<br>
+        🔥 <strong>Total Consumido:</strong> ${totalCalorias.toFixed(2)} kcal 🔥
+      `;
+    }
+  </script>
+
+</body>
+
+</html>
