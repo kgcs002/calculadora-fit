@@ -33,7 +33,7 @@ Ideal para quem quer acompanhar sua saúde de forma simples e divertida!
 
 ## 🚀 Como Usar
 
-1️⃣ **Acesse** o arquivo `index.html` em qualquer navegador moderno  
+1️⃣ **Acesse** https://calculadora-fit-tau.vercel.app/  
 2️⃣ **Preencha** seus dados para calcular o IMC  
 3️⃣ **Adicione** os alimentos consumidos  
 4️⃣ **Informe** as porções quando for calcular o total calórico  
